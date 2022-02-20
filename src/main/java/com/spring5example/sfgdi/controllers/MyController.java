@@ -1,17 +1,18 @@
 package com.spring5example.sfgdi.controllers;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-
 import com.spring5example.sfgdi.services.GreetingService;
+import org.springframework.stereotype.Controller;
 
 @Controller
 public class MyController {
 
-  @Autowired
-  GreetingService greetingService;
+  private final GreetingService greetingService;
 
-  public String sayHelloWorld() {
+  public MyController(GreetingService greetingService) {
+    this.greetingService = greetingService;
+  }
+
+  public String sayHello() {
     return greetingService.sayGreeting();
   }
 }
